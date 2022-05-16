@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\MemberFormRequest;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use Illuminate\Support\Facades\Log;
@@ -22,12 +21,21 @@ class MemberController extends Controller
         }
     }
 
-    public function registerMember(MemberFormRequest $member, Request $request)
+    public function registerMember(Member $member, Request $request)
     {
         try {
             DB::beginTransaction();
-            $postData = $request->only(['name', 'grade', 'gender', 'part']);
-            $member_id = $member->insertMemberAndGetId($postData);
+
+            $validatedData = $request->validate([
+            'name' =>'required',
+            'grade' =>['required','integer'],
+            'gender' =>'required',
+            'part' =>'required',
+            ]);
+
+            Log::info($validatedData);
+            // $postData =$request->only(['name', 'grade', 'gender', 'part']);
+            $member_id = $member->insertMemberAndGetId($validatedData);
 
             if ($request->has('band_id')) {
                 $band_id = $request->input('band_id');
