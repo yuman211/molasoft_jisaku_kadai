@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\DB;
 class Band extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     protected $guarded = ['id'];
 
