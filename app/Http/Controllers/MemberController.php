@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MemberFormRequest;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use Illuminate\Support\Facades\Log;
 use Exception;
 use Illuminate\Support\Facades\DB;
+
 
 class MemberController extends Controller
 {
@@ -20,7 +22,7 @@ class MemberController extends Controller
         }
     }
 
-    public function registerMember(Member $member, Request $request)
+    public function registerMember(MemberFormRequest $member, Request $request)
     {
         try {
             DB::beginTransaction();
