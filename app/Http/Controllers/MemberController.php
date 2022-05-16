@@ -30,7 +30,7 @@ class MemberController extends Controller
             $member_id = $member->insertMemberAndGetId($postData);
 
             if ($request->has('band_id')) {
-                $band_id = $request->only('band_id');
+                $band_id = $request->input('band_id');
                 $member->tagBandWithMember($member_id, $band_id);
             }
 
