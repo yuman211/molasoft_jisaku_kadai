@@ -32,10 +32,10 @@ class Member extends Model
         }
     }
 
-    public function insertMemberAndGetId($postData)
+    public function insertMemberAndGetId($validatedData)
     {
         try {
-            return $this->insertGetId($postData);
+            return $this->insertGetId($validatedData);
         } catch (Exception $e) {
             Log::emergency($e->getMessage());
             throw $e;

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BandController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,4 @@ Route::post('/member/update',[MemberController::class, 'updateMember']);
 
 Route::post('/band/register',[BandController::class, 'registerBand']);
 
-
-
-
+Route::post('/reservation_list',[ReservationController::class, 'showReservation']);

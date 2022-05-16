@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call([BandsTableSeeder::class]);
         $this->call([MembersTableSeeder::class]);
         $this->call([BandsMembersTableSeeder::class]);
-
+        $this->call([ReservationsTableSeeder::class]);
     }
 }
