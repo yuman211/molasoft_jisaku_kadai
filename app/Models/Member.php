@@ -44,24 +44,28 @@ class Member extends Model
 
     public function tagBandWithMember($member_id, $band_id)
     {
-        // DB::table('bands_members')->insert(
-        //     [
-        //         'band_id' => $band_id,
-        //         'member_id' => $member_id,
-        //     ]
-        // );
 
-        $this->bands()->attach(
-            ['band_id' => $band_id],
-            ['member_id' => $member_id]
-        );
+        try {
+            // $this->bands()->attach(
+            //     ['band_id' => $band_id],
+            //     ['member_id' => $member_id]
+            // );
+
+            DB::table('bands_members')->insert([
+                'band_id' => $band_id,
+                'member_id' => $member_id
+            ]);
+
+        } catch (Exception $e) {
+            Log::emergency($e->getMessage());
+            throw $e;
+        }
     }
 
     public function softDeleteMember($postData)
     {
         try {
             $this->where('id', '=', $postData)->delete();
-
         } catch (Exception $e) {
             Log::emergency($e->getMessage());
             throw $e;
@@ -78,5 +82,3 @@ class Member extends Model
         }
     }
 }
-
-
