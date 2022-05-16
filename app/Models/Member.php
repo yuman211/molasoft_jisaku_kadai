@@ -55,6 +55,7 @@ class Member extends Model
             ['band_id' => $band_id],
             ['member_id' => $member_id]
         );
+    
     }
 
     public function softDeleteMember($postData)
@@ -78,5 +79,3 @@ class Member extends Model
         }
     }
 }
-
-
