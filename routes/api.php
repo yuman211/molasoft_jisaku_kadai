@@ -29,3 +29,9 @@ Route::post('/member/register',[MemberController::class, 'registerMember']);
 Route::post('/member/delete',[MemberController::class, 'deleteMember']);
 
 Route::post('/member/update',[MemberController::class, 'updateMember']);
+
+Route::post('/band/register',[BandController::class, 'registerBand']);
+
+
+
+
