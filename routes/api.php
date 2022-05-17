@@ -34,3 +34,5 @@ Route::post('/member/update',[MemberController::class, 'updateMember']);
 Route::post('/band/register',[BandController::class, 'registerBand']);
 
 Route::post('/reservation_list',[ReservationController::class, 'showReservation']);
+
+Route::post('/reservation/register',[ReservationController::class, 'registerReservation']);
