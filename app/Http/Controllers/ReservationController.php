@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Exception;
 
+
+
 use function PHPUnit\Framework\isEmpty;
 
 class ReservationController extends Controller
@@ -31,6 +33,7 @@ class ReservationController extends Controller
 
     public function registerReservation(Reservation $reservation, Request $request)
     {
+
         try {
             //スタジオ、日にち、バンドID、予約開始時間、予約終了時間がとんできたとする。
             $postData = $request->only(['studio', 'date', 'band_id', 'start_time', 'end_time']);
@@ -56,6 +59,7 @@ class ReservationController extends Controller
             //予約ができる状況であれば登録。
             if ($check_result) {
                 $reservation->insertReservation($postData);
+                \Slack::send('予約が登録されました');
                 return '予約できました';
             } else {
                 return '予約できませんでした';

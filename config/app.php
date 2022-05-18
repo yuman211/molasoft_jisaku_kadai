@@ -154,6 +154,8 @@ return [
     |
     */
 
+    'slack_url' => env('SLACK_CHANNEL'),
+
     'providers' => [
 
         /*
@@ -194,6 +196,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\SlackServiceProvider::class,
     ],
 
     /*
@@ -209,6 +212,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Slack' => App\Services\Slack\SlackFacade::class,
     ])->toArray(),
 
 ];
