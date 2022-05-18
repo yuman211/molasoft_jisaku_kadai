@@ -27,10 +27,10 @@ class MemberController extends Controller
             DB::beginTransaction();
 
             $validatedData = $request->validate([
-            'name' =>'required',
+            'name' =>['required','string','max:15'],
             'grade' =>['required','integer'],
-            'gender' =>'required',
-            'part' =>'required',
+            'gender' => ['required', 'string'],
+            'part'=> ['required', 'string'],
             ]);
 
             Log::info($validatedData);

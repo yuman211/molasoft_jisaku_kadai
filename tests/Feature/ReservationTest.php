@@ -42,12 +42,12 @@ class ReservationTest extends TestCase
             'start_time' => "10:00:00",
             'end_time' => "16:00:00",
         ];
-
+        //実行・検証
         $this->post('api/reservation/register', $postData)
-        ->assertOK();
+            ->assertOK();
 
         $this->assertCount(2, Reservation::all());
-        $this->assertDatabaseMissing('reservations',$postData);
+        $this->assertDatabaseMissing('reservations', $postData);
     }
 
     /**
@@ -81,12 +81,12 @@ class ReservationTest extends TestCase
             'start_time' => "20:00:00",
             'end_time' => "21:00:00",
         ];
-
+        //実行・検証
         $this->post('api/reservation/register', $postData)
-        ->assertOK();
+            ->assertOK();
 
         $this->assertCount(3, Reservation::all());
-        $this->assertDatabaseHas('reservations',$postData);
+        $this->assertDatabaseHas('reservations', $postData);
     }
 
     /**
@@ -120,9 +120,9 @@ class ReservationTest extends TestCase
             'start_time' => "10:00:00",
             'end_time' => "16:00:00",
         ];
-
+        //実行・検証
         $this->post('api/reservation/register', $postData)
-        ->assertOK();
+            ->assertOK();
 
         $this->assertCount(3, Reservation::all());
         $this->assertDatabaseHas('reservations', $postData);
