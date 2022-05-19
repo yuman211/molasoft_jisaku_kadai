@@ -70,27 +70,3 @@ class ReservationController extends Controller
         }
     }
 }
-
-// //スタジオ、日にち、バンドID、予約開始時間、予約終了時間がとんできたとする。
-// $postData = $request->only(['studio', 'date', 'band_id', 'start_time', 'end_time']);
-// //スタジオ、日にちで絞ったデータを取得。
-// $searchedData = $reservation->searchByStudioAndDate($postData);
-// //予約の配列をループで一つずつ重複チェックする。
-
-// foreach ($searchedData as $each) {
-//     $start_time = $each['start_time'];
-//     $end_time = $each['end_time'];
-
-//     if ($postData['start_time'] <= $end_time && $postData['end_time'] >= $start_time) {
-//         Log::info('重複しています');
-//         abort(403);
-//     } else {
-//         Log::info('予約できます');
-//         $check_result = true;
-//     }
-// }
-
-// //重複チェックが全てOKであれば
-// if ($check_result) {
-//     $reservation->insertReservation($postData);
-// }
